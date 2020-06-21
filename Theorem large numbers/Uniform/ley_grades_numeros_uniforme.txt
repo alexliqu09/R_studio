@@ -1,0 +1,33 @@
+tamaño<-c(30:500)
+b<-1
+a<-0
+"uniforme  runiform  va en el rango de [0,1] podemos cambiarlo
+ Agregando runiform(n,2,4) esto seria el intervalo [2,4]"
+
+media<-NULL
+i<-1
+"Lo que buscamos para plotear es ,que por cada tamaño nosotros tendremos una media
+ por este motivo creamos distribuciones uniformes ,dependiendo del tamaño.
+ En otra palabras si tuvieramos en el vector tamaño 30 ,entonces ,creamos valores
+ 30 aleatorios con distrbución uniforme ,en el intervalo de [0,1].(calculamos su media)
+ en la siguiente iteración para 31 y haci hasta 500.
+ El objtevo es visualizar el teorema de los grandes números y para ello
+ necesitamos de estas medias vs su tamaño respectivo.
+"
+
+for(i in 1:length(tamaño)){
+  Distribución_uniforme<-runif(tamaño[i],a,b)
+  media[i]<-sum(Distribución_uniforme/tamaño[i])
+  
+}
+
+media_uniforme<-(a+b)/2
+
+"En esta linea de código ploteamos la gáfica y trazamos su media
+ de la distribución uniforme teórica y vemos que converge a ella
+ para Un n bastante grande 
+"
+
+plot(cbind(tamaño,media),type = "l")
+
+abline(h=media_uniforme,col="red")
