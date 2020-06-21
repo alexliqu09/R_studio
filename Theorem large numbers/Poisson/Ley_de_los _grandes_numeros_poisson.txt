@@ -1,0 +1,30 @@
+tamaño<-c(30:500)
+
+#uniforme  rpois  pasando como parametros el lamda cualquiera
+#podemos cambiarlo es arbitrario y para una poblcación tamaño que va
+#aumentando en general consideramos una población grande n>30
+
+media<-NULL
+
+i<-1
+
+lammbda<-2
+"
+Procedemos aplicar el mismo método,para un tamaño 30 posee una
+media respectiva,para un tamaño 31 igualy asi iterativamente 
+hasta 500.
+"
+
+for(i in 1:length(tamaño)){
+  
+  Distribución_poisson<-rpois(n[i],lambda =lammbda)
+  media[i]<-sum(Distribución_poisson/tamaño[i])
+  
+}
+
+"Ploteamos la gráfica con media lammda que nosotros podemos 
+ Ajustar.(gráfica media vs tamaño)
+"
+plot(cbind(tamaño,media),type = "l")
+
+abline(h=lammbda,col="red")
