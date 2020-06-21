@@ -1,0 +1,30 @@
+
+"Procedemos a llenar algunos datos de berneulli para 
+la distribución binomial,como Porbabilidad ,el numero de observaciones,y numeros
+ de berneulli(0 y 1)
+"
+
+num_berneulli<-300
+probability<-0.4
+n_observaciones<-500
+"Antes de escribir la formula del TCL debemos calcular 
+ la media y su desviación estándar
+"
+
+suma_variables<-rbinom(n_observaciones,num_berneulli,prob =probability)
+
+suma_variables<-suma_variables/num_berneulli
+
+media<-num_berneulli*probability*(1-probability)
+
+sigma<-sqrt(num_berneulli*probability*(1-probability))
+
+TLC<-(suma_variables-media)/sigma
+
+"Porcedemos A plotear las gráficas,y comparar la función de densidad
+ de nuestro TCL
+ "
+
+Histograma <- hist(TLC,breaks = 10, freq = F)
+
+lines(density(TLC), col="blue")
