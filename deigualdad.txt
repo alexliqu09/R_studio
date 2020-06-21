@@ -1,0 +1,62 @@
+"Creamos variables aleatorias X"
+
+X<-c(1:50000)
+
+"desordenamos las variables aleatoriamente"
+
+X<-sample(X)
+
+"cumpliendo con las restricciones de la desigualdad escogemos un T>0"
+
+"Creamos variables aleatorias X"
+
+X<-c(1:50000)
+
+"desordenamos las variables aleatoriamente"
+
+X<-sample(X)
+
+"cumpliendo con las restricciones de la desigualdad"
+
+"escogemos un T>0"
+
+t<- 2
+
+" escogemos un alfa"
+
+alfa<- 2
+
+"se calcula la media que se usara para el momento"
+
+Mediana<-median(X)
+
+"se calcula el momento" 
+
+Momento_X<-sum(exp(t)*Mediana)*(1/alfa)
+
+"siguiendo lo que pide desigualdad calculamos el ln"
+
+log_natural<-(1/t)*logb(alfa)
+
+"creando el vector probabilidad que de manera intiuitiva"
+
+probability<-X/sum(X)
+
+"probando la desigualdad"
+
+desigualdad<-probability[ probability[X>=log_natural]<=Momento_X]
+
+"Que entendemos del código de arriba,bueno,Ha todos los X que son mayores
+A  el log_natural ,si es verdad se usara la posición del vector probability
+en este momento,de igual forma ,si este es menor que el momento_X ,entonces
+se guarda en desigualdad para asi comparar ,si desigualdad es igual 
+es por que se cumplió la desigualdad y todos sus elementos cumplen esta
+sino entonces la desigualdad no se cumplió"
+
+comprobando<-length(probability)
+comprobando1<-length(desigualdad)
+
+"podemos visualizar que poseen la misma longitud entonces todo los elementos
+cumplieron la desigualdad y se cumple
+Esto se uso para n valores de alfa y t donde no cumple para valores 
+alfa<1 y t<0"
